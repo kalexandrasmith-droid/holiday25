@@ -1,0 +1,809 @@
+<!-- Holiday Card Component for Webflow -->
+<!-- Add this to an Embed element in Webflow -->
+
+<div class="hc-wrapper">
+  <div class="hc-card">
+    <div class="hc-media" id="hc-media">
+      <!-- Main Illustration -->
+      <img
+        src="https://cdn.prod.website-files.com/691b683abe1e01c80cbaeb7b/691d20e01f7efc993d43c831_Vector%20_%20Holiday%20Card%20Illustration%20(2).svg"
+        alt="Holiday card illustration"
+        class="hc-image"
+      />
+
+      <!-- Hotspot 1: Bakery -->
+      <button
+        class="hc-hotspot"
+        style="top: 35%; left: 25%;"
+        data-hotspot="bakery"
+        aria-label="View Bakery details"
+      ></button>
+
+      <!-- Hotspot 2: Bookshop -->
+      <button
+        class="hc-hotspot"
+        style="top: 50%; left: 70%;"
+        data-hotspot="bookshop"
+        aria-label="View Bookshop details"
+      ></button>
+
+      <!-- Hotspot 3: Bar -->
+      <button
+        class="hc-hotspot"
+        style="top: 65%; left: 45%;"
+        data-hotspot="bar"
+        aria-label="View Bar details"
+      ></button>
+
+      <!-- Back button -->
+      <button class="hc-back-button" id="hc-back-button">
+        <span>←</span>
+        Back to full scene
+      </button>
+    </div>
+  </div>
+
+  <!-- Overlay -->
+  <div class="hc-overlay" id="hc-overlay"></div>
+
+  <!-- Intro Popup -->
+  <div class="hc-popup hc-popup-intro" id="hc-popup-intro">
+    <div class="hc-popup-inner-intro">
+      <div class="hc-popup-header">
+        <span class="hc-popup-label" id="hc-intro-label"></span>
+        <button class="hc-popup-close" aria-label="Close">✕</button>
+      </div>
+      <h2 class="hc-popup-title" id="hc-intro-title"></h2>
+      <p class="hc-popup-text" id="hc-intro-text"></p>
+      <button class="hc-popup-button-primary" id="hc-intro-button"></button>
+    </div>
+  </div>
+
+  <!-- Explore Popup -->
+  <div class="hc-popup hc-popup-explore" id="hc-popup-explore">
+    <div class="hc-popup-inner-explore">
+      <!-- Header -->
+      <div class="hc-explore-header">
+        <button class="hc-explore-back" id="hc-explore-back">
+          <span>←</span> Back
+        </button>
+        <span class="hc-explore-counter" id="hc-explore-counter">1 - 3</span>
+        <button class="hc-popup-close" aria-label="Close">✕</button>
+      </div>
+
+      <!-- Card Content -->
+      <div class="hc-explore-content">
+        <!-- Left: Illustration -->
+        <div class="hc-explore-left">
+          <div class="hc-explore-icon" id="hc-explore-icon"></div>
+        </div>
+        <!-- Right: Text -->
+        <div class="hc-explore-right">
+          <span class="hc-card-category" id="hc-card-category"></span>
+          <h3 class="hc-card-title" id="hc-card-title"></h3>
+          <p class="hc-card-description" id="hc-card-description"></p>
+          <button class="hc-card-cta" id="hc-card-cta"></button>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="hc-explore-nav">
+        <button class="hc-nav-arrow" id="hc-nav-prev">‹</button>
+        <div class="hc-nav-dots" id="hc-nav-dots"></div>
+        <button class="hc-nav-arrow" id="hc-nav-next">›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Wrapper */
+  .hc-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Main Card */
+  .hc-card {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hc-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: bottom;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hc-media {
+    position: relative;
+    width: 100%;
+    transform-origin: 0 0;
+    transform: translate(0px, 0px) scale(1);
+    transition: transform 0.6s ease-in-out;
+    line-height: 0;
+    font-size: 0;
+  }
+
+  /* Hotspots */
+  .hc-hotspot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.2) 45%, transparent 70%);
+    box-shadow:
+      0 0 4px rgba(255, 255, 255, 0.9),
+      0 0 10px rgba(190, 220, 255, 0.9),
+      0 0 24px rgba(160, 210, 255, 0.9);
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    animation:
+      hc-sparkle-pulse 2.4s ease-in-out infinite,
+      hc-sparkle-twinkle 3.2s ease-in-out infinite alternate;
+  }
+
+  .hc-hotspot::before,
+  .hc-hotspot::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 999px;
+    width: 2px;
+    height: 16px;
+    pointer-events: none;
+  }
+
+  .hc-hotspot::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .hc-hotspot::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .hc-hotspot:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+
+  @keyframes hc-sparkle-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.12); }
+  }
+
+  @keyframes hc-sparkle-twinkle {
+    0% {
+      box-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 0 12px rgba(190, 220, 255, 0.9), 0 0 26px rgba(160, 210, 255, 0.9);
+      opacity: 0.9;
+    }
+    50% {
+      box-shadow: 0 0 2px rgba(255, 255, 255, 0.9), 0 0 18px rgba(220, 240, 255, 1), 0 0 36px rgba(180, 225, 255, 1);
+      opacity: 1;
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(190, 220, 255, 0.8), 0 0 22px rgba(150, 200, 255, 0.85);
+      opacity: 0.85;
+    }
+  }
+
+  /* Back Button */
+  .hc-back-button {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    padding: 8px 16px;
+    background: rgba(15, 23, 42, 0.7);
+    color: #f9fafb;
+    border-radius: 999px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 4;
+  }
+
+  .hc-back-button.hc-visible {
+    display: inline-flex;
+  }
+
+  /* Overlay */
+  .hc-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 29, 38, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 50;
+  }
+
+  .hc-overlay.hc-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Popups Base */
+  .hc-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.96);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 60;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .hc-popup.hc-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* Intro Popup */
+  .hc-popup-inner-intro {
+    background: linear-gradient(135deg, #fefdfb 0%, #f8f6f1 100%);
+    border-radius: 1.25rem;
+    border: 1px solid rgba(180, 160, 120, 0.2);
+    box-shadow: 
+      0 25px 50px -12px rgba(12, 29, 38, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    padding: 1.75rem;
+    width: 90vw;
+    max-width: 24rem;
+  }
+
+  .hc-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .hc-popup-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #8b7355;
+    font-weight: 500;
+  }
+
+  .hc-popup-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: rgba(139, 115, 85, 0.08);
+    border: 1px solid rgba(139, 115, 85, 0.15);
+    color: #8b7355;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .hc-popup-close:hover {
+    background: rgba(139, 115, 85, 0.15);
+    border-color: rgba(139, 115, 85, 0.25);
+  }
+
+  .hc-popup-title {
+    margin: 0 0 0.75rem;
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: #2c3e50;
+    letter-spacing: -0.01em;
+  }
+
+  .hc-popup-text {
+    margin: 0 0 1.25rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #5a6c7a;
+  }
+
+  .hc-popup-button-primary {
+    padding: 0.625rem 1.25rem;
+    background: linear-gradient(135deg, #8b7355 0%, #6b5a45 100%);
+    color: #fefdfb;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(107, 90, 69, 0.3);
+  }
+
+  .hc-popup-button-primary:hover {
+    background: linear-gradient(135deg, #9a8265 0%, #7a6950 100%);
+    box-shadow: 0 4px 12px rgba(107, 90, 69, 0.4);
+    transform: translateY(-1px);
+  }
+
+  /* Explore Popup */
+  .hc-popup-inner-explore {
+    background: linear-gradient(135deg, #fefdfb 0%, #f8f6f1 100%);
+    border-radius: 1.25rem;
+    border: 1px solid rgba(180, 160, 120, 0.2);
+    box-shadow: 
+      0 25px 50px -12px rgba(12, 29, 38, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+    width: 95vw;
+    max-width: 42rem;
+    overflow: hidden;
+  }
+
+  .hc-explore-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+  }
+
+  .hc-explore-back {
+    font-size: 0.875rem;
+    color: #8b7355;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .hc-explore-back:hover {
+    color: #6b5a45;
+  }
+
+  .hc-explore-counter {
+    font-size: 0.75rem;
+    color: #a89880;
+    letter-spacing: 0.1em;
+  }
+
+  .hc-explore-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 640px) {
+    .hc-explore-content {
+      flex-direction: row;
+    }
+  }
+
+  .hc-explore-left {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(139, 115, 85, 0.03);
+    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+  }
+
+  @media (min-width: 640px) {
+    .hc-explore-left {
+      width: 40%;
+      border-bottom: none;
+      border-right: 1px solid rgba(139, 115, 85, 0.1);
+    }
+  }
+
+  .hc-explore-icon {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #fff 0%, #f8f6f1 100%);
+    border: 1px solid rgba(139, 115, 85, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 4px 12px rgba(139, 115, 85, 0.1);
+  }
+
+  .hc-explore-right {
+    padding: 1.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .hc-explore-right {
+      width: 60%;
+    }
+  }
+
+  .hc-card-category {
+    display: inline-block;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #8b7355;
+    background: rgba(139, 115, 85, 0.1);
+    padding: 0.25rem 0.625rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.875rem;
+    font-weight: 500;
+  }
+
+  .hc-card-title {
+    margin: 0 0 0.875rem;
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: #2c3e50;
+    letter-spacing: -0.01em;
+  }
+
+  .hc-card-description {
+    margin: 0 0 1.25rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #5a6c7a;
+  }
+
+  .hc-card-cta {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #8b7355;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+  }
+
+  .hc-card-cta:hover {
+    color: #6b5a45;
+  }
+
+  .hc-card-cta::after {
+    content: " →";
+    font-size: 0.75rem;
+  }
+
+  /* Navigation */
+  .hc-explore-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    border-top: 1px solid rgba(139, 115, 85, 0.1);
+    gap: 1rem;
+  }
+
+  .hc-nav-arrow {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(139, 115, 85, 0.2);
+    background: rgba(139, 115, 85, 0.05);
+    color: #8b7355;
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .hc-nav-arrow:hover:not(:disabled) {
+    background: rgba(139, 115, 85, 0.12);
+    border-color: rgba(139, 115, 85, 0.3);
+  }
+
+  .hc-nav-arrow:disabled {
+    border-color: rgba(139, 115, 85, 0.1);
+    color: rgba(139, 115, 85, 0.3);
+    cursor: not-allowed;
+    background: transparent;
+  }
+
+  .hc-nav-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .hc-nav-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: rgba(139, 115, 85, 0.25);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease;
+  }
+
+  .hc-nav-dot:hover {
+    background: rgba(139, 115, 85, 0.4);
+  }
+
+  .hc-nav-dot.hc-active {
+    background: #8b7355;
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+(function() {
+  // Data
+  const hotspotData = {
+    bakery: {
+      label: 'Bakery',
+      scale: 2.3,
+      intro: {
+        title: 'The Holiday Bakery',
+        text: 'A warm corner filled with the scent of cinnamon and fresh bread. The baker has been up since dawn, folding butter into dough.',
+        buttonText: 'Explore Recipes'
+      },
+      cards: [
+        {
+          category: 'Bread',
+          title: 'Holiday Brioche',
+          description: 'A slow-risen brioche with orange zest, cranberries, and a ribbon of cinnamon sugar woven through each layer. Best served warm, torn by hand, with salted butter that melts into every crevice. The dough requires patience—a full overnight rise—but the result is worth every hour of waiting. This recipe has been passed down through three generations of bakers, each one adding their own small refinements while preserving the essential character of the original.',
+          cta: 'View Recipe',
+          icon: '🥐'
+        },
+        {
+          category: 'Cookies',
+          title: 'Cinnamon Stars',
+          description: 'Crisp, airy cookies dusted in vanilla sugar and shaped like perfect six-pointed stars. They snap cleanly when bitten and dissolve on the tongue. Perfect for dipping into coffee while watching the snow fall outside. The secret is in the temperature—everything must stay cold until the moment they enter the oven. We roll the dough between sheets of parchment, freeze it solid, then cut the stars quickly before the butter softens.',
+          cta: 'View Recipe',
+          icon: '🥐'
+        },
+        {
+          category: 'Pastry',
+          title: 'Almond Croissants',
+          description: 'Flaky layers filled with homemade frangipane cream and topped with sliced almonds and a light glaze that cracks when you bite through. These are made from yesterday\'s croissants, soaked in almond syrup and given new life. A perfect example of how the best things often come from what might otherwise be discarded. The frangipane is made fresh each morning with blanched almonds ground to a fine powder.',
+          cta: 'View Recipe',
+          icon: '🥐'
+        }
+      ]
+    },
+    bookshop: {
+      label: 'Bookshop',
+      scale: 2.4,
+      intro: {
+        title: 'The Corner Bookshop',
+        text: 'Shelves stacked floor to ceiling with well-loved volumes. The owner leaves out tea and shortbread for browsers.',
+        buttonText: 'Browse Collection'
+      },
+      cards: [
+        {
+          category: 'Fiction',
+          title: 'Winter Reading List',
+          description: 'Small, quiet novels meant to be read in one sitting, under a blanket, with something warm to drink. These are stories of solitude and connection, of long nights and unexpected kindnesses. Each one has been selected for its ability to make the reader feel less alone, even while sitting in silence. The owner has written notes in the margins of every copy, sharing her own thoughts with strangers who might need them.',
+          cta: 'See List',
+          icon: '📚'
+        },
+        {
+          category: 'Cookbooks',
+          title: 'Baking Classics',
+          description: 'Dog-eared baking books with handwritten notes in the margins and recipes borrowed from grandparents and great-aunts. Stained pages tell the story of years spent in kitchens, learning through failure and triumph. These aren\'t just cookbooks—they\'re family histories, preserved in flour and sugar and the careful measurements of those who came before. Open any one and you\'ll find a story between the recipes.',
+          cta: 'Explore',
+          icon: '📚'
+        },
+        {
+          category: 'Poetry',
+          title: 'Seasonal Verse',
+          description: 'Collections of poems about frost, firelight, and the quiet magic of the shortest days. Words that capture the feeling of watching snow fall, of sitting by a window in the late afternoon when the light turns golden. Poetry for people who think they don\'t like poetry—accessible, moving, and utterly human. Read one each morning with your coffee and see how it changes the shape of your day.',
+          cta: 'Read More',
+          icon: '📚'
+        }
+      ]
+    },
+    bar: {
+      label: 'Bar',
+      scale: 2.2,
+      intro: {
+        title: 'The Midnight Bar',
+        text: 'A dimly lit space where the bartender knows everyone\'s name. The specialty is warm drinks with a kick.',
+        buttonText: 'Indulge'
+      },
+      cards: [
+        {
+          category: 'Aperitif',
+          title: 'Midnight Negroni',
+          description: 'The classic, served with a charred orange peel that releases its oils in a fragrant burst, and a single large ice cube that melts slowly, opening the drink as the evening progresses. Equal parts gin, Campari, and sweet vermouth, stirred until the glass frosts. Simple in composition, complex in character—like the best conversations you\'ll have while drinking it.',
+          cta: 'View Recipe',
+          icon: '🍸'
+        },
+        {
+          category: 'Hot Cocktail',
+          title: 'Spiced Toddy',
+          description: 'Whiskey, honey, lemon, and a cinnamon stick—the remedy for any winter evening and the cure for whatever ails you. The water must be hot but not boiling, and the honey should be stirred until it dissolves completely. Served in a glass mug that warms your hands while you drink. There\'s a reason this recipe has survived centuries. It works.',
+          cta: 'View Recipe',
+          icon: '🍸'
+        },
+        {
+          category: 'Signature',
+          title: 'Velvet Evening',
+          description: 'A house creation with aged rum, Madagascar vanilla, and a hint of cold-brew coffee. Served in a warmed glass with a single coffee bean floating on top. Rich and smooth, with a finish that lingers. The bartender developed this over three winters, adjusting the proportions until it was exactly right. Now it\'s what everyone orders on their first visit—and every visit after.',
+          cta: 'View Recipe',
+          icon: '🍸'
+        }
+      ]
+    }
+  };
+
+  // State
+  let activeHotspot = null;
+  let currentCardIndex = 0;
+
+  // Elements
+  const media = document.getElementById('hc-media');
+  const overlay = document.getElementById('hc-overlay');
+  const backButton = document.getElementById('hc-back-button');
+  const introPopup = document.getElementById('hc-popup-intro');
+  const explorePopup = document.getElementById('hc-popup-explore');
+  const hotspots = document.querySelectorAll('.hc-hotspot');
+
+  // Intro elements
+  const introLabel = document.getElementById('hc-intro-label');
+  const introTitle = document.getElementById('hc-intro-title');
+  const introText = document.getElementById('hc-intro-text');
+  const introButton = document.getElementById('hc-intro-button');
+
+  // Explore elements
+  const exploreCounter = document.getElementById('hc-explore-counter');
+  const exploreIcon = document.getElementById('hc-explore-icon');
+  const cardCategory = document.getElementById('hc-card-category');
+  const cardTitle = document.getElementById('hc-card-title');
+  const cardDescription = document.getElementById('hc-card-description');
+  const cardCta = document.getElementById('hc-card-cta');
+  const navDots = document.getElementById('hc-nav-dots');
+  const navPrev = document.getElementById('hc-nav-prev');
+  const navNext = document.getElementById('hc-nav-next');
+
+  // Functions
+  function zoomToHotspot(hotspotEl, data) {
+    const mediaRect = media.getBoundingClientRect();
+    const scale = data.scale;
+
+    const style = hotspotEl.style;
+    const hotspotX = parseFloat(style.left) / 100;
+    const hotspotY = parseFloat(style.top) / 100;
+
+    const targetX = 0.4;
+    const targetY = 0.5;
+
+    const tx = (targetX - scale * hotspotX) * mediaRect.width;
+    const ty = (targetY - scale * hotspotY) * mediaRect.height;
+
+    media.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+  }
+
+  function resetView() {
+    media.style.transform = 'translate(0px, 0px) scale(1)';
+    backButton.classList.remove('hc-visible');
+    overlay.classList.remove('hc-visible');
+    introPopup.classList.remove('hc-visible');
+    explorePopup.classList.remove('hc-visible');
+    activeHotspot = null;
+    currentCardIndex = 0;
+  }
+
+  function showIntro(hotspotId) {
+    const data = hotspotData[hotspotId];
+    activeHotspot = hotspotId;
+    currentCardIndex = 0;
+
+    introLabel.textContent = data.label;
+    introTitle.textContent = data.intro.title;
+    introText.textContent = data.intro.text;
+    introButton.textContent = data.intro.buttonText;
+
+    overlay.classList.add('hc-visible');
+    introPopup.classList.add('hc-visible');
+    explorePopup.classList.remove('hc-visible');
+    backButton.classList.add('hc-visible');
+  }
+
+  function showExplore() {
+    if (!activeHotspot) return;
+    const data = hotspotData[activeHotspot];
+
+    introPopup.classList.remove('hc-visible');
+    explorePopup.classList.add('hc-visible');
+
+    // Build dots
+    navDots.innerHTML = '';
+    data.cards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'hc-nav-dot' + (i === 0 ? ' hc-active' : '');
+      dot.addEventListener('click', () => goToCard(i));
+      navDots.appendChild(dot);
+    });
+
+    updateCard();
+  }
+
+  function updateCard() {
+    if (!activeHotspot) return;
+    const data = hotspotData[activeHotspot];
+    const card = data.cards[currentCardIndex];
+
+    exploreCounter.textContent = `${currentCardIndex + 1} - ${data.cards.length}`;
+    exploreIcon.textContent = card.icon;
+    cardCategory.textContent = card.category;
+    cardTitle.textContent = card.title;
+    cardDescription.textContent = card.description;
+    cardCta.textContent = card.cta;
+
+    // Update dots
+    const dots = navDots.querySelectorAll('.hc-nav-dot');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('hc-active', i === currentCardIndex);
+    });
+
+    // Update arrows
+    navPrev.disabled = currentCardIndex === 0;
+    navNext.disabled = currentCardIndex === data.cards.length - 1;
+  }
+
+  function goToCard(index) {
+    currentCardIndex = index;
+    updateCard();
+  }
+
+  // Event listeners
+  hotspots.forEach(hotspot => {
+    hotspot.addEventListener('click', () => {
+      const hotspotId = hotspot.getAttribute('data-hotspot');
+      const data = hotspotData[hotspotId];
+      zoomToHotspot(hotspot, data);
+      setTimeout(() => showIntro(hotspotId), 500);
+    });
+  });
+
+  backButton.addEventListener('click', resetView);
+  overlay.addEventListener('click', resetView);
+
+  document.querySelectorAll('.hc-popup-close').forEach(btn => {
+    btn.addEventListener('click', resetView);
+  });
+
+  introButton.addEventListener('click', showExplore);
+
+  document.getElementById('hc-explore-back').addEventListener('click', () => {
+    explorePopup.classList.remove('hc-visible');
+    introPopup.classList.add('hc-visible');
+  });
+
+  navPrev.addEventListener('click', () => {
+    if (currentCardIndex > 0) {
+      currentCardIndex--;
+      updateCard();
+    }
+  });
+
+  navNext.addEventListener('click', () => {
+    if (activeHotspot && currentCardIndex < hotspotData[activeHotspot].cards.length - 1) {
+      currentCardIndex++;
+      updateCard();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') resetView();
+  });
+})();
+</script>
