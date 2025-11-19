@@ -161,19 +161,17 @@
     height: 32px;
     border-radius: 999px;
     border: 1.5px solid rgba(165, 216, 255, 0.8);
-    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(165, 216, 255, 0.6) 30%, rgba(99, 179, 237, 0.3) 60%, transparent 80%);
+    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(165, 216, 255, 0.6) 30%, transparent 70%);
     box-shadow:
-      0 0 8px rgba(165, 216, 255, 0.9),
-      0 0 16px rgba(99, 179, 237, 0.7),
-      0 0 32px rgba(59, 130, 246, 0.5),
-      0 0 48px rgba(37, 99, 235, 0.3);
+      0 0 12px rgba(165, 216, 255, 0.8),
+      0 0 24px rgba(59, 130, 246, 0.5);
     cursor: pointer;
     transform: translate(-50%, -50%);
     z-index: 3;
     animation:
       hc-sparkle-pulse 3s ease-in-out infinite,
-      hc-sparkle-twinkle 4s ease-in-out infinite alternate,
-      hc-sparkle-shimmer 2s linear infinite;
+      hc-sparkle-twinkle 4s ease-in-out infinite alternate;
+    will-change: transform;
   }
 
   .hc-hotspot::before,
@@ -202,10 +200,8 @@
     transform: translate(-50%, -50%) scale(1.2);
     border-color: rgba(255, 255, 255, 0.95);
     box-shadow:
-      0 0 12px rgba(165, 216, 255, 1),
-      0 0 24px rgba(99, 179, 237, 0.9),
-      0 0 40px rgba(59, 130, 246, 0.7),
-      0 0 60px rgba(37, 99, 235, 0.5);
+      0 0 16px rgba(165, 216, 255, 1),
+      0 0 32px rgba(59, 130, 246, 0.7);
   }
 
   @keyframes hc-sparkle-pulse {
@@ -214,38 +210,12 @@
   }
 
   @keyframes hc-sparkle-twinkle {
-    0% {
-      box-shadow:
-        0 0 8px rgba(165, 216, 255, 0.9),
-        0 0 16px rgba(99, 179, 237, 0.7),
-        0 0 32px rgba(59, 130, 246, 0.5),
-        0 0 48px rgba(37, 99, 235, 0.3);
-      opacity: 0.95;
-    }
-    50% {
-      box-shadow:
-        0 0 12px rgba(255, 255, 255, 0.95),
-        0 0 24px rgba(165, 216, 255, 0.9),
-        0 0 40px rgba(99, 179, 237, 0.7),
-        0 0 60px rgba(59, 130, 246, 0.5);
-      opacity: 1;
-    }
-    100% {
-      box-shadow:
-        0 0 6px rgba(165, 216, 255, 0.85),
-        0 0 14px rgba(99, 179, 237, 0.65),
-        0 0 28px rgba(59, 130, 246, 0.45),
-        0 0 42px rgba(37, 99, 235, 0.25);
+    0%, 100% {
       opacity: 0.9;
     }
-  }
-
-  @keyframes hc-sparkle-shimmer {
-    0% { filter: brightness(1) hue-rotate(0deg); }
-    25% { filter: brightness(1.1) hue-rotate(5deg); }
-    50% { filter: brightness(1.2) hue-rotate(0deg); }
-    75% { filter: brightness(1.1) hue-rotate(-5deg); }
-    100% { filter: brightness(1) hue-rotate(0deg); }
+    50% {
+      opacity: 1;
+    }
   }
 
   /* Back Button */
@@ -254,7 +224,7 @@
     left: 20px;
     bottom: 20px;
     padding: 10px 20px;
-    background: rgba(15, 23, 42, 0.4);
+    background: rgba(15, 23, 42, 0.7);
     color: #e0f2fe;
     border-radius: 999px;
     font-size: 13px;
@@ -263,8 +233,8 @@
     display: none;
     align-items: center;
     gap: 6px;
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 4;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -323,10 +293,9 @@
     border: 1.5px solid rgba(165, 216, 255, 0.3);
     box-shadow:
       0 30px 60px -15px rgba(15, 23, 42, 0.5),
-      0 0 0 1px rgba(255, 255, 255, 0.6) inset,
-      0 0 40px rgba(59, 130, 246, 0.15);
-    backdrop-filter: blur(24px) saturate(200%);
-    -webkit-backdrop-filter: blur(24px) saturate(200%);
+      0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 2rem;
     width: 90vw;
     max-width: 26rem;
@@ -425,10 +394,9 @@
     border: 1.5px solid rgba(165, 216, 255, 0.3);
     box-shadow:
       0 30px 60px -15px rgba(15, 23, 42, 0.5),
-      0 0 0 1px rgba(255, 255, 255, 0.6) inset,
-      0 0 40px rgba(59, 130, 246, 0.15);
-    backdrop-filter: blur(24px) saturate(200%);
-    -webkit-backdrop-filter: blur(24px) saturate(200%);
+      0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     width: 90vw;
     max-width: 32rem;
     overflow: hidden;
@@ -704,6 +672,7 @@
     pointer-events: none;
     z-index: 100;
     overflow: hidden;
+    contain: layout style paint;
   }
 
   .hc-snowflake {
@@ -712,7 +681,8 @@
     font-size: 1rem;
     opacity: 0.8;
     animation: hc-fall linear infinite;
-    text-shadow: 0 0 8px rgba(165, 216, 255, 0.8);
+    text-shadow: 0 0 4px rgba(165, 216, 255, 0.6);
+    will-change: transform, opacity;
   }
 
   @keyframes hc-fall {
@@ -739,6 +709,7 @@
     pointer-events: none;
     z-index: 99;
     overflow: hidden;
+    contain: layout style paint;
   }
 
   .hc-particle {
@@ -746,9 +717,10 @@
     width: 3px;
     height: 3px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(165, 216, 255, 0.9) 0%, rgba(99, 179, 237, 0.5) 50%, transparent 100%);
-    box-shadow: 0 0 8px rgba(165, 216, 255, 0.8);
+    background: radial-gradient(circle, rgba(165, 216, 255, 0.9) 0%, transparent 100%);
+    box-shadow: 0 0 4px rgba(165, 216, 255, 0.6);
     animation: hc-float ease-in-out infinite;
+    will-change: transform, opacity;
   }
 
   @keyframes hc-float {
@@ -1052,7 +1024,7 @@
   // Create snowflakes
   function createSnowflakes() {
     const container = document.getElementById('hc-snowflakes');
-    const snowflakeCount = 30;
+    const snowflakeCount = 12; // Reduced from 30
 
     for (let i = 0; i < snowflakeCount; i++) {
       const snowflake = document.createElement('div');
@@ -1070,7 +1042,7 @@
   // Create particles
   function createParticles() {
     const container = document.getElementById('hc-particles');
-    const particleCount = 40;
+    const particleCount = 15; // Reduced from 40
 
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement('div');
@@ -1083,7 +1055,7 @@
     }
 
     // Add some twinkling stars
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 8; i++) { // Reduced from 20
       const star = document.createElement('div');
       star.className = 'hc-star';
       star.style.left = `${Math.random() * 100}%`;
