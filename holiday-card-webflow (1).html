@@ -1,6 +1,9 @@
 <!-- Holiday Card Component for Webflow -->
 <!-- Add this to an Embed element in Webflow -->
 
+<!-- Typekit Font -->
+<link rel="stylesheet" href="https://use.typekit.net/jnh3rud.css">
+
 <div class="hc-wrapper">
   <div class="hc-card">
     <div class="hc-media" id="hc-media">
@@ -73,16 +76,29 @@
 
       <!-- Card Content -->
       <div class="hc-explore-content">
-        <!-- Left: Illustration -->
-        <div class="hc-explore-left">
-          <div class="hc-explore-icon" id="hc-explore-icon"></div>
-        </div>
-        <!-- Right: Text -->
-        <div class="hc-explore-right">
-          <span class="hc-card-category" id="hc-card-category"></span>
-          <h3 class="hc-card-title" id="hc-card-title"></h3>
-          <p class="hc-card-description" id="hc-card-description"></p>
-          <button class="hc-card-cta" id="hc-card-cta"></button>
+        <div class="hc-card-container">
+          <!-- Card Image -->
+          <div class="hc-card-img">
+            <div class="hc-explore-icon" id="hc-explore-icon"></div>
+          </div>
+          <!-- Card Content -->
+          <div class="hc-card-content">
+            <div class="hc-card-header">
+              <span class="hc-card-category" id="hc-card-category"></span>
+            </div>
+            <div class="hc-card-body">
+              <h3 class="hc-card-title" id="hc-card-title"></h3>
+              <p class="hc-card-description" id="hc-card-description"></p>
+            </div>
+            <div class="hc-card-footer">
+              <button class="hc-card-cta" id="hc-card-cta">
+                <span class="hc-cta-text"></span>
+                <svg class="hc-card-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 28 28" fill="none">
+                  <path d="M7.39667 19.005L17.0683 9.33333L10.5583 9.33333C10.2489 9.33333 9.95217 9.21042 9.73338 8.99162C9.51458 8.77283 9.39167 8.47609 9.39167 8.16667C9.39167 7.85725 9.51458 7.5605 9.73338 7.34171C9.95217 7.12292 10.2489 7 10.5583 7L19.8333 7C20.1428 7 20.4395 7.12292 20.6583 7.34171C20.8771 7.5605 21 7.85725 21 8.16667L21 17.5C21 17.8094 20.8771 18.1062 20.6583 18.325C20.4395 18.5438 20.1428 18.6667 19.8333 18.6667H19.8917C19.5822 18.6667 19.2855 18.5438 19.0667 18.325C18.8479 18.1062 18.725 17.8094 18.725 17.5L18.725 11.025L9.08833 20.6617C8.97988 20.771 8.85084 20.8578 8.70867 20.917C8.5665 20.9763 8.41401 21.0068 8.26 21.0068C8.10599 21.0068 7.9535 20.9763 7.81133 20.917C7.66916 20.8578 7.54012 20.771 7.43167 20.6617C7.31999 20.5555 7.23045 20.4283 7.16819 20.2874C7.10594 20.1465 7.07221 19.9946 7.06896 19.8406C7.0657 19.6866 7.09299 19.5335 7.14923 19.39C7.20548 19.2466 7.28958 19.1158 7.39667 19.005Z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -94,6 +110,12 @@
       </div>
     </div>
   </div>
+
+  <!-- Snowflakes -->
+  <div class="hc-snowflakes" id="hc-snowflakes"></div>
+
+  <!-- Particles -->
+  <div class="hc-particles" id="hc-particles"></div>
 </div>
 
 <style>
@@ -102,6 +124,7 @@
     position: relative;
     width: 100%;
     box-sizing: border-box;
+    overflow: hidden;
   }
 
   /* Main Card */
@@ -109,7 +132,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    background: #000;
+    background: linear-gradient(180deg, #0c1d26 0%, #2d4a59 50%, #2e5a56 100%);
   }
 
   .hc-image {
@@ -134,21 +157,21 @@
   /* Hotspots */
   .hc-hotspot {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.2) 45%, transparent 70%);
+    border: 1.5px solid rgba(216, 171, 40, 0.9);
+    background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(242, 221, 157, 0.7) 30%, rgba(216, 171, 40, 0.3) 60%, transparent 80%);
     box-shadow:
-      0 0 4px rgba(255, 255, 255, 0.9),
-      0 0 10px rgba(190, 220, 255, 0.9),
-      0 0 24px rgba(160, 210, 255, 0.9);
+      0 0 12px rgba(216, 171, 40, 0.8),
+      0 0 24px rgba(242, 221, 157, 0.5);
     cursor: pointer;
     transform: translate(-50%, -50%);
     z-index: 3;
     animation:
-      hc-sparkle-pulse 2.4s ease-in-out infinite,
-      hc-sparkle-twinkle 3.2s ease-in-out infinite alternate;
+      hc-sparkle-pulse 3s ease-in-out infinite,
+      hc-sparkle-twinkle 4s ease-in-out infinite alternate;
+    will-change: transform;
   }
 
   .hc-hotspot::before,
@@ -157,11 +180,12 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    background: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(242, 221, 157, 0.9) 100%);
     border-radius: 999px;
-    width: 2px;
-    height: 16px;
+    width: 2.5px;
+    height: 18px;
     pointer-events: none;
+    filter: drop-shadow(0 0 4px rgba(216, 171, 40, 0.8));
   }
 
   .hc-hotspot::before {
@@ -173,40 +197,37 @@
   }
 
   .hc-hotspot:hover {
-    transform: translate(-50%, -50%) scale(1.15);
+    transform: translate(-50%, -50%) scale(1.2);
+    border-color: rgba(255, 255, 255, 0.95);
+    box-shadow:
+      0 0 16px rgba(216, 171, 40, 1),
+      0 0 32px rgba(242, 221, 157, 0.8);
   }
 
   @keyframes hc-sparkle-pulse {
     0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.12); }
+    50% { transform: translate(-50%, -50%) scale(1.15); }
   }
 
   @keyframes hc-sparkle-twinkle {
-    0% {
-      box-shadow: 0 0 4px rgba(255, 255, 255, 0.9), 0 0 12px rgba(190, 220, 255, 0.9), 0 0 26px rgba(160, 210, 255, 0.9);
+    0%, 100% {
       opacity: 0.9;
     }
     50% {
-      box-shadow: 0 0 2px rgba(255, 255, 255, 0.9), 0 0 18px rgba(220, 240, 255, 1), 0 0 36px rgba(180, 225, 255, 1);
       opacity: 1;
-    }
-    100% {
-      box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(190, 220, 255, 0.8), 0 0 22px rgba(150, 200, 255, 0.85);
-      opacity: 0.85;
     }
   }
 
   /* Back Button */
   .hc-back-button {
     position: absolute;
-    left: 16px;
-    bottom: 16px;
-    padding: 8px 16px;
-    background: rgba(15, 23, 42, 0.7);
-    color: #f9fafb;
+    left: 20px;
+    bottom: 20px;
+    padding: 10px 20px;
+    background: rgba(12, 29, 38, 0.8);
+    color: #f2dd9d;
     border-radius: 999px;
     font-size: 13px;
-    border: none;
     cursor: pointer;
     display: none;
     align-items: center;
@@ -214,6 +235,13 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     z-index: 4;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .hc-back-button:hover {
+    background: rgba(12, 29, 38, 0.9);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
   }
 
   .hc-back-button.hc-visible {
@@ -224,11 +252,13 @@
   .hc-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(12, 29, 38, 0.6);
+    background: radial-gradient(circle at center, rgba(12, 29, 38, 0.8) 0%, rgba(41, 65, 48, 0.9) 100%);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 50;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .hc-overlay.hc-visible {
@@ -241,11 +271,11 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.96);
+    transform: translate(-50%, -50%) scale(0.92);
     opacity: 0;
     pointer-events: none;
     z-index: 60;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .hc-popup.hc-visible {
@@ -256,227 +286,307 @@
 
   /* Intro Popup */
   .hc-popup-inner-intro {
-    background: linear-gradient(135deg, #fefdfb 0%, #f8f6f1 100%);
-    border-radius: 1.25rem;
-    border: 1px solid rgba(180, 160, 120, 0.2);
-    box-shadow: 
-      0 25px 50px -12px rgba(12, 29, 38, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.5) inset;
-    padding: 1.75rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(242, 221, 157, 0.12) 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 50px rgba(12, 29, 38, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2rem;
     width: 90vw;
-    max-width: 24rem;
+    max-width: 26rem;
+    position: relative;
+    overflow: hidden;
   }
 
   .hc-popup-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   .hc-popup-label {
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: #8b7355;
-    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: #804120;
+    font-weight: 600;
+    opacity: 0.8;
   }
 
   .hc-popup-close {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 999px;
-    background: rgba(139, 115, 85, 0.08);
-    border: 1px solid rgba(139, 115, 85, 0.15);
-    color: #8b7355;
-    font-size: 14px;
+    background: rgba(216, 171, 40, 0.08);
+    border: 1px solid rgba(216, 171, 40, 0.15);
+    color: #804120;
+    font-size: 16px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .hc-popup-close:hover {
-    background: rgba(139, 115, 85, 0.15);
-    border-color: rgba(139, 115, 85, 0.25);
+    background: rgba(216, 171, 40, 0.15);
+    border-color: rgba(216, 171, 40, 0.3);
+    transform: rotate(90deg);
+    box-shadow: 0 4px 12px rgba(216, 171, 40, 0.2);
   }
 
   .hc-popup-title {
-    margin: 0 0 0.75rem;
-    font-size: 1.375rem;
-    font-weight: 600;
-    color: #2c3e50;
-    letter-spacing: -0.01em;
+    margin: 0 0 1rem;
+    font-size: 1.75rem;
+    font-weight: 400;
+    font-family: 'charcuterie-block', serif;
+    color: #1e293b;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
   }
 
   .hc-popup-text {
-    margin: 0 0 1.25rem;
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    color: #5a6c7a;
+    margin: 0 0 1.5rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #475569;
   }
 
   .hc-popup-button-primary {
-    padding: 0.625rem 1.25rem;
-    background: linear-gradient(135deg, #8b7355 0%, #6b5a45 100%);
-    color: #fefdfb;
+    padding: 0.75rem 1.75rem;
+    background: linear-gradient(135deg, #d8ab28 0%, #804120 100%);
+    color: #ffffff;
     border: none;
     border-radius: 999px;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(107, 90, 69, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(128, 65, 32, 0.3);
   }
 
   .hc-popup-button-primary:hover {
-    background: linear-gradient(135deg, #9a8265 0%, #7a6950 100%);
-    box-shadow: 0 4px 12px rgba(107, 90, 69, 0.4);
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #e6ba3a 0%, #904a26 100%);
+    box-shadow: 0 6px 16px rgba(128, 65, 32, 0.4);
+    transform: translateY(-2px);
   }
 
   /* Explore Popup */
   .hc-popup-inner-explore {
-    background: linear-gradient(135deg, #fefdfb 0%, #f8f6f1 100%);
-    border-radius: 1.25rem;
-    border: 1px solid rgba(180, 160, 120, 0.2);
-    box-shadow: 
-      0 25px 50px -12px rgba(12, 29, 38, 0.4),
-      0 0 0 1px rgba(255, 255, 255, 0.5) inset;
-    width: 95vw;
-    max-width: 42rem;
-    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(242, 221, 157, 0.12) 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 50px rgba(12, 29, 38, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 90vw;
+    max-width: 28rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
   }
 
   .hc-explore-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(216, 171, 40, 0.1);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
   }
 
   .hc-explore-back {
     font-size: 0.875rem;
-    color: #8b7355;
+    color: #804120;
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .hc-explore-back:hover {
-    color: #6b5a45;
+    color: #d8ab28;
+    transform: translateX(-2px);
   }
 
   .hc-explore-counter {
     font-size: 0.75rem;
-    color: #a89880;
-    letter-spacing: 0.1em;
+    color: #64748b;
+    letter-spacing: 0.15em;
+    font-weight: 600;
   }
 
   .hc-explore-content {
-    display: flex;
-    flex-direction: column;
+    padding: 2rem;
   }
 
-  @media (min-width: 640px) {
-    .hc-explore-content {
-      flex-direction: row;
+  .hc-card-container {
+    display: flex;
+    flex-direction: column;
+    background: #294130;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: hc-card-enter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes hc-card-enter {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
   }
 
-  .hc-explore-left {
-    padding: 2rem;
+  .hc-card-container:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Remove individual card themes */
+  .hc-card-bakery,
+  .hc-card-bookshop,
+  .hc-card-bar {
+    background: #294130;
+  }
+
+  .hc-card-bakery .hc-card-img,
+  .hc-card-bookshop .hc-card-img,
+  .hc-card-bar .hc-card-img {
+    background: linear-gradient(135deg, rgba(216, 171, 40, 0.08) 0%, rgba(41, 65, 48, 0.5) 100%);
+  }
+
+  .hc-card-bakery .hc-card-category,
+  .hc-card-bookshop .hc-card-category,
+  .hc-card-bar .hc-card-category {
+    color: #d8ab28;
+    background: rgba(216, 171, 40, 0.15);
+    border-color: rgba(216, 171, 40, 0.3);
+  }
+
+  .hc-card-bakery .hc-card-cta:hover,
+  .hc-card-bookshop .hc-card-cta:hover,
+  .hc-card-bar .hc-card-cta:hover {
+    color: #f2dd9d;
+  }
+
+  /* Card Image Section */
+  .hc-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, rgba(216, 171, 40, 0.08) 0%, rgba(41, 65, 48, 0.5) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(139, 115, 85, 0.03);
-    border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+    position: relative;
+    overflow: hidden;
   }
 
-  @media (min-width: 640px) {
-    .hc-explore-left {
-      width: 40%;
-      border-bottom: none;
-      border-right: 1px solid rgba(139, 115, 85, 0.1);
-    }
+  .hc-card-img::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(216, 171, 40, 0.12) 0%, transparent 70%);
+    pointer-events: none;
   }
 
   .hc-explore-icon {
-    width: 8rem;
-    height: 8rem;
-    border-radius: 1rem;
-    background: linear-gradient(135deg, #fff 0%, #f8f6f1 100%);
-    border: 1px solid rgba(139, 115, 85, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    box-shadow: 0 4px 12px rgba(139, 115, 85, 0.1);
+    font-size: 5rem;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .hc-explore-right {
+  .hc-card-container:hover .hc-explore-icon {
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4));
+  }
+
+  /* Card Content Section */
+  .hc-card-content {
     padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  @media (min-width: 640px) {
-    .hc-explore-right {
-      width: 60%;
-    }
+  .hc-card-header {
+    margin-bottom: 0.5rem;
   }
 
   .hc-card-category {
     display: inline-block;
     font-size: 0.6875rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: #8b7355;
-    background: rgba(139, 115, 85, 0.1);
-    padding: 0.25rem 0.625rem;
-    border-radius: 0.25rem;
-    margin-bottom: 0.875rem;
-    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: #d8ab28;
+    background: rgba(216, 171, 40, 0.15);
+    padding: 0.375rem 0.875rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: 1px solid rgba(216, 171, 40, 0.3);
+  }
+
+  .hc-card-body {
+    flex: 1;
   }
 
   .hc-card-title {
-    margin: 0 0 0.875rem;
-    font-size: 1.375rem;
-    font-weight: 600;
-    color: #2c3e50;
-    letter-spacing: -0.01em;
+    margin: 0 0 0.75rem;
+    font-size: 1.75rem;
+    font-weight: 400;
+    font-family: 'charcuterie-block', serif;
+    color: #ffffff;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
   }
 
   .hc-card-description {
-    margin: 0 0 1.25rem;
+    margin: 0;
     font-size: 0.9375rem;
-    line-height: 1.7;
-    color: #5a6c7a;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .hc-card-footer {
+    margin-top: 0.5rem;
   }
 
   .hc-card-cta {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     font-weight: 500;
-    color: #8b7355;
+    color: #ffffff;
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
-    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .hc-card-cta:hover {
-    color: #6b5a45;
+    color: #f2dd9d;
+    gap: 0.75rem;
   }
 
-  .hc-card-cta::after {
-    content: " →";
-    font-size: 0.75rem;
+  .hc-card-arrow {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hc-card-cta:hover .hc-card-arrow {
+    transform: translate(2px, -2px);
+    color: #f2dd9d;
   }
 
   /* Navigation */
@@ -484,61 +594,157 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.25rem;
-    border-top: 1px solid rgba(139, 115, 85, 0.1);
-    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(216, 171, 40, 0.1);
+    gap: 1.25rem;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
   }
 
   .hc-nav-arrow {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 999px;
-    border: 1px solid rgba(139, 115, 85, 0.2);
-    background: rgba(139, 115, 85, 0.05);
-    color: #8b7355;
-    font-size: 1.25rem;
+    border: 1.5px solid rgba(128, 65, 32, 0.25);
+    background: rgba(216, 171, 40, 0.08);
+    color: #804120;
+    font-size: 1.5rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .hc-nav-arrow:hover:not(:disabled) {
-    background: rgba(139, 115, 85, 0.12);
-    border-color: rgba(139, 115, 85, 0.3);
+    background: rgba(216, 171, 40, 0.15);
+    border-color: rgba(216, 171, 40, 0.4);
+    box-shadow: 0 4px 12px rgba(216, 171, 40, 0.2);
+    transform: scale(1.05);
   }
 
   .hc-nav-arrow:disabled {
-    border-color: rgba(139, 115, 85, 0.1);
-    color: rgba(139, 115, 85, 0.3);
+    border-color: rgba(128, 65, 32, 0.1);
+    color: rgba(128, 65, 32, 0.3);
     cursor: not-allowed;
     background: transparent;
   }
 
   .hc-nav-dots {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.625rem;
   }
 
   .hc-nav-dot {
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 999px;
-    background: rgba(139, 115, 85, 0.25);
+    background: rgba(128, 65, 32, 0.3);
     border: none;
     cursor: pointer;
     padding: 0;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .hc-nav-dot:hover {
-    background: rgba(139, 115, 85, 0.4);
+    background: rgba(128, 65, 32, 0.5);
+    transform: scale(1.15);
   }
 
   .hc-nav-dot.hc-active {
-    background: #8b7355;
-    transform: scale(1.2);
+    background: #804120;
+    transform: scale(1.3);
+    box-shadow: 0 0 8px rgba(128, 65, 32, 0.4);
+  }
+
+  /* Snowflakes */
+  .hc-snowflakes {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+    contain: layout style paint;
+  }
+
+  .hc-snowflake {
+    position: absolute;
+    color: #fff;
+    font-size: 1rem;
+    opacity: 0.8;
+    animation: hc-fall linear infinite;
+    text-shadow: 0 0 4px rgba(165, 216, 255, 0.6);
+    will-change: transform, opacity;
+  }
+
+  @keyframes hc-fall {
+    0% {
+      transform: translateY(-10vh) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(110vh) translateX(var(--drift)) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Particles */
+  .hc-particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 99;
+    overflow: hidden;
+    contain: layout style paint;
+  }
+
+  .hc-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(165, 216, 255, 0.9) 0%, transparent 100%);
+    box-shadow: 0 0 4px rgba(165, 216, 255, 0.6);
+    animation: hc-float ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  @keyframes hc-float {
+    0%, 100% {
+      transform: translateY(0) translateX(0) scale(1);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-20px) translateX(10px) scale(1.2);
+      opacity: 0.8;
+    }
+  }
+
+  /* Twinkling stars */
+  @keyframes hc-twinkle-star {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.5);
+    }
+  }
+
+  .hc-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+    animation: hc-twinkle-star ease-in-out infinite;
   }
 </style>
 
@@ -669,6 +875,7 @@
   const cardTitle = document.getElementById('hc-card-title');
   const cardDescription = document.getElementById('hc-card-description');
   const cardCta = document.getElementById('hc-card-cta');
+  const cardContainer = document.querySelector('.hc-card-container');
   const navDots = document.getElementById('hc-nav-dots');
   const navPrev = document.getElementById('hc-nav-prev');
   const navNext = document.getElementById('hc-nav-next');
@@ -746,7 +953,10 @@
     cardCategory.textContent = card.category;
     cardTitle.textContent = card.title;
     cardDescription.textContent = card.description;
-    cardCta.textContent = card.cta;
+    cardCta.querySelector('.hc-cta-text').textContent = card.cta;
+
+    // Update card theme based on hotspot
+    cardContainer.className = 'hc-card-container hc-card-' + activeHotspot;
 
     // Update dots
     const dots = navDots.querySelectorAll('.hc-nav-dot');
@@ -805,5 +1015,54 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') resetView();
   });
+
+  // Create snowflakes
+  function createSnowflakes() {
+    const container = document.getElementById('hc-snowflakes');
+    const snowflakeCount = 12; // Reduced from 30
+
+    for (let i = 0; i < snowflakeCount; i++) {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'hc-snowflake';
+      snowflake.textContent = '❄';
+      snowflake.style.left = `${Math.random() * 100}%`;
+      snowflake.style.setProperty('--drift', `${(Math.random() - 0.5) * 100}px`);
+      snowflake.style.animationDuration = `${8 + Math.random() * 10}s`;
+      snowflake.style.animationDelay = `${Math.random() * 5}s`;
+      snowflake.style.fontSize = `${0.5 + Math.random() * 1}rem`;
+      container.appendChild(snowflake);
+    }
+  }
+
+  // Create particles
+  function createParticles() {
+    const container = document.getElementById('hc-particles');
+    const particleCount = 15; // Reduced from 40
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'hc-particle';
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.animationDuration = `${3 + Math.random() * 4}s`;
+      particle.style.animationDelay = `${Math.random() * 3}s`;
+      container.appendChild(particle);
+    }
+
+    // Add some twinkling stars
+    for (let i = 0; i < 8; i++) { // Reduced from 20
+      const star = document.createElement('div');
+      star.className = 'hc-star';
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${2 + Math.random() * 3}s`;
+      star.style.animationDelay = `${Math.random() * 2}s`;
+      container.appendChild(star);
+    }
+  }
+
+  // Initialize
+  createSnowflakes();
+  createParticles();
 })();
 </script>
