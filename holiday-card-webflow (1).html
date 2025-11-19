@@ -341,12 +341,15 @@
     background: linear-gradient(135deg, #fefdfb 0%, #f8f6f1 100%);
     border-radius: 1.25rem;
     border: 1px solid rgba(180, 160, 120, 0.2);
-    box-shadow: 
+    box-shadow:
       0 25px 50px -12px rgba(12, 29, 38, 0.4),
       0 0 0 1px rgba(255, 255, 255, 0.5) inset;
     width: 95vw;
-    max-width: 42rem;
+    max-width: 75rem;
+    max-height: 90vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .hc-explore-header {
@@ -355,6 +358,7 @@
     justify-content: space-between;
     padding: 1rem 1.25rem;
     border-bottom: 1px solid rgba(139, 115, 85, 0.1);
+    flex-shrink: 0;
   }
 
   .hc-explore-back {
@@ -383,6 +387,9 @@
   .hc-explore-content {
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
   }
 
   @media (min-width: 640px) {
@@ -487,6 +494,7 @@
     padding: 1.25rem;
     border-top: 1px solid rgba(139, 115, 85, 0.1);
     gap: 1rem;
+    flex-shrink: 0;
   }
 
   .hc-nav-arrow {
