@@ -753,98 +753,98 @@
   // Data
   const hotspotData = {
     bakery: {
-      label: 'Bakery',
+      label: 'Food',
       scale: 2.3,
       intro: {
-        title: 'The Holiday Bakery',
-        text: 'A warm corner filled with the scent of cinnamon and fresh bread. The baker has been up since dawn, folding butter into dough.',
+        title: 'Holiday Recipe Roundup',
+        text: 'Gather around the table with these festive recipes—from hearty mains to comforting sides that bring warmth to your holiday celebrations.',
         buttonText: 'Explore Recipes'
       },
       cards: [
         {
+          category: 'Main Course',
+          title: 'Red Wine Braised Short Ribs',
+          description: 'Ingredients: 6–8 short ribs, 4 medium carrots (1" pieces), 2 large onions (wedges), 6 garlic cloves, 1 tbsp tomato paste, 2 cups dry red wine, 1 cup beef broth, 1 bay leaf, 4 thyme sprigs, russet potatoes for serving. Thickener: 4 tsp cornstarch + 3 tbsp cold water. Directions: Brown ribs; transfer to slow cooker. Add carrots, broth, thyme, bay leaf. Sauté onions 8 min. Add garlic + tomato paste; add wine. Reduce by half; add to slow cooker. Cook LOW 6–8 hours. Transfer liquid; remove herbs. Thicken with cornstarch slurry. Serve over mashed potatoes.',
+          cta: 'View Recipe',
+          icon: '🍖'
+        },
+        {
+          category: 'Side Dish',
+          title: 'Tini\'s Holiday Mac & Cheese',
+          description: 'Ingredients: 1 lb cavatappi pasta, 16 oz mozzarella (grated), 16 oz Colby Jack (grated), 8 oz cheddar (grated), spices: garlic powder, smoked paprika, salt, pepper, 3 tbsp butter, 3 tbsp flour, 1 can evaporated milk, 2 cups heavy cream, 1 tbsp Dijon mustard. Directions: Bake layered pasta + cheese at 350°F for 25–30 min; broil 2 min until golden.',
+          cta: 'View Recipe',
+          icon: '🧀'
+        },
+        {
           category: 'Bread',
-          title: 'Holiday Brioche',
-          description: 'A slow-risen brioche with orange zest, cranberries, and a ribbon of cinnamon sugar woven through each layer. Best served warm, torn by hand, with salted butter that melts into every crevice. The dough requires patience—a full overnight rise—but the result is worth every hour of waiting. This recipe has been passed down through three generations of bakers, each one adding their own small refinements while preserving the essential character of the original.',
+          title: 'Friendsgiving Jalapeño Cheddar Cornbread',
+          description: 'Ingredients: Jiffy mix, sugar, egg, milk/cream, sour cream, melted butter, salt, jalapeños, shredded cheddar. Directions: Mix ingredients, pour into buttered/salted 8×8 or 9×9 pan, bake at 375°F for ~27 minutes. Perfect for soaking up all those delicious holiday gravies and sauces.',
           cta: 'View Recipe',
-          icon: '🥐'
+          icon: '🌽'
         },
         {
-          category: 'Cookies',
-          title: 'Cinnamon Stars',
-          description: 'Crisp, airy cookies dusted in vanilla sugar and shaped like perfect six-pointed stars. They snap cleanly when bitten and dissolve on the tongue. Perfect for dipping into coffee while watching the snow fall outside. The secret is in the temperature—everything must stay cold until the moment they enter the oven. We roll the dough between sheets of parchment, freeze it solid, then cut the stars quickly before the butter softens.',
+          category: 'Soup',
+          title: 'Hoppin\' John Soup (New Year\'s Good Luck)',
+          description: 'Ingredients: Black-eyed peas, rice, onions, celery, tomatoes, garlic, butter, thyme, oregano, rosemary, cayenne, stock, water, bay leaf. Directions: Simmer tomatoes + peas + stock; sauté aromatics and herbs in butter; combine and simmer 1 hour; add rice and cook 15–20 min. A traditional Southern dish believed to bring prosperity in the new year.',
           cta: 'View Recipe',
-          icon: '🥐'
-        },
-        {
-          category: 'Pastry',
-          title: 'Almond Croissants',
-          description: 'Flaky layers filled with homemade frangipane cream and topped with sliced almonds and a light glaze that cracks when you bite through. These are made from yesterday\'s croissants, soaked in almond syrup and given new life. A perfect example of how the best things often come from what might otherwise be discarded. The frangipane is made fresh each morning with blanched almonds ground to a fine powder.',
-          cta: 'View Recipe',
-          icon: '🥐'
+          icon: '🍲'
         }
       ]
     },
     bookshop: {
-      label: 'Bookshop',
+      label: 'Books & Traditions',
       scale: 2.4,
       intro: {
-        title: 'The Corner Bookshop',
-        text: 'Shelves stacked floor to ceiling with well-loved volumes. The owner leaves out tea and shortbread for browsers.',
+        title: 'Holiday Traditions & Books',
+        text: 'Discover festive traditions to make new memories and beautiful coffee table books perfect for gift-giving or winter browsing.',
         buttonText: 'Browse Collection'
       },
       cards: [
         {
-          category: 'Fiction',
-          title: 'Winter Reading List',
-          description: 'Small, quiet novels meant to be read in one sitting, under a blanket, with something warm to drink. These are stories of solitude and connection, of long nights and unexpected kindnesses. Each one has been selected for its ability to make the reader feel less alone, even while sitting in silence. The owner has written notes in the margins of every copy, sharing her own thoughts with strangers who might need them.',
-          cta: 'See List',
-          icon: '📚'
+          category: 'Tradition',
+          title: 'The Christmas Pickle',
+          description: 'Hide a pickle ornament in the tree; the first finder gets a bonus gift or good-luck bragging rights. This quirky tradition adds an element of fun and competition to Christmas morning, and it\'s a great way to get everyone engaged before opening presents.',
+          cta: 'Learn More',
+          icon: '🥒'
         },
         {
-          category: 'Cookbooks',
-          title: 'Baking Classics',
-          description: 'Dog-eared baking books with handwritten notes in the margins and recipes borrowed from grandparents and great-aunts. Stained pages tell the story of years spent in kitchens, learning through failure and triumph. These aren\'t just cookbooks—they\'re family histories, preserved in flour and sugar and the careful measurements of those who came before. Open any one and you\'ll find a story between the recipes.',
-          cta: 'Explore',
-          icon: '📚'
+          category: 'Activity',
+          title: 'Holiday Toy Swap',
+          description: 'A waste-free way to rotate toys: each family brings 2–3 gently used ones to exchange before the holidays. This tradition helps reduce clutter, teaches kids about sharing and sustainability, and gives toys a second life with families who will love them just as much.',
+          cta: 'Get Started',
+          icon: '🎁'
         },
         {
-          category: 'Poetry',
-          title: 'Seasonal Verse',
-          description: 'Collections of poems about frost, firelight, and the quiet magic of the shortest days. Words that capture the feeling of watching snow fall, of sitting by a window in the late afternoon when the light turns golden. Poetry for people who think they don\'t like poetry—accessible, moving, and utterly human. Read one each morning with your coffee and see how it changes the shape of your day.',
-          cta: 'Read More',
+          category: 'Coffee Table Books',
+          title: 'Giftable Books Collection',
+          description: 'Curated selection of beautiful books perfect for the season: Martha Stewart\'s timeless entertaining guide, Color by Kelly Wearstler, Ralph Lauren\'s iconic designs, Woman Made celebrating female artists, and The English Country House exploring grand estates. Each one makes a thoughtful gift or a stunning addition to your own collection. Add our curated holiday playlist: https://open.spotify.com/playlist/0qAXWBfhoB2I9NsCBRabgy',
+          cta: 'View Collection',
           icon: '📚'
         }
       ]
     },
     bar: {
-      label: 'Bar',
+      label: 'Drinks',
       scale: 2.2,
       intro: {
-        title: 'The Midnight Bar',
-        text: 'A dimly lit space where the bartender knows everyone\'s name. The specialty is warm drinks with a kick.',
-        buttonText: 'Indulge'
+        title: 'Holiday Drinks & Mocktails',
+        text: 'Warm up your celebrations with festive beverages—from spiced cider to sparkling mocktails that everyone can enjoy.',
+        buttonText: 'Mix a Drink'
       },
       cards: [
         {
-          category: 'Aperitif',
-          title: 'Midnight Negroni',
-          description: 'The classic, served with a charred orange peel that releases its oils in a fragrant burst, and a single large ice cube that melts slowly, opening the drink as the evening progresses. Equal parts gin, Campari, and sweet vermouth, stirred until the glass frosts. Simple in composition, complex in character—like the best conversations you\'ll have while drinking it.',
+          category: 'Hot Beverage',
+          title: 'Spiked (or Not) Hot Cider',
+          description: 'Base: Apple cider, cinnamon sticks, cloves, orange slices. Directions: Warm in crockpot 4 hours on LOW. Optional add-ins: bourbon, whiskey, lemon juice, maple syrup, ginger, star anise. The perfect drink for cold winter evenings, whether you choose to spike it or keep it family-friendly. Serve in mugs with a cinnamon stick for stirring.',
           cta: 'View Recipe',
-          icon: '🍸'
+          icon: '🍎'
         },
         {
-          category: 'Hot Cocktail',
-          title: 'Spiced Toddy',
-          description: 'Whiskey, honey, lemon, and a cinnamon stick—the remedy for any winter evening and the cure for whatever ails you. The water must be hot but not boiling, and the honey should be stirred until it dissolves completely. Served in a glass mug that warms your hands while you drink. There\'s a reason this recipe has survived centuries. It works.',
+          category: 'Mocktail',
+          title: 'Citrus Ginger Sparkler',
+          description: 'Ingredients: Grapefruit juice, lemon juice, honey syrup, fresh ginger, bitters, sparkling water, ice, rosemary (optional). Directions: Muddle ginger with syrup; add juices + bitters; shake with ice; strain; top with sparkling water. A refreshing, sophisticated non-alcoholic option that\'s perfect for designated drivers and those who prefer to skip the alcohol.',
           cta: 'View Recipe',
-          icon: '🍸'
-        },
-        {
-          category: 'Signature',
-          title: 'Velvet Evening',
-          description: 'A house creation with aged rum, Madagascar vanilla, and a hint of cold-brew coffee. Served in a warmed glass with a single coffee bean floating on top. Rich and smooth, with a finish that lingers. The bartender developed this over three winters, adjusting the proportions until it was exactly right. Now it\'s what everyone orders on their first visit—and every visit after.',
-          cta: 'View Recipe',
-          icon: '🍸'
+          icon: '✨'
         }
       ]
     }
