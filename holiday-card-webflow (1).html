@@ -160,7 +160,7 @@
     width: 32px;
     height: 32px;
     border-radius: 999px;
-    border: 1.5px solid rgba(216, 171, 40, 0.9);
+    border: none;
     background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(242, 221, 157, 0.7) 30%, rgba(216, 171, 40, 0.3) 60%, transparent 80%);
     box-shadow:
       0 0 12px rgba(216, 171, 40, 0.8),
@@ -169,47 +169,24 @@
     transform: translate(-50%, -50%);
     z-index: 3;
     animation:
-      hc-sparkle-pulse 3s ease-in-out infinite,
-      hc-sparkle-twinkle 4s ease-in-out infinite alternate;
+      hc-glow-pulse 3s ease-in-out infinite,
+      hc-glow-fade 4s ease-in-out infinite alternate;
     will-change: transform;
-  }
-
-  .hc-hotspot::before,
-  .hc-hotspot::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(242, 221, 157, 0.9) 100%);
-    border-radius: 999px;
-    width: 2.5px;
-    height: 18px;
-    pointer-events: none;
-    filter: drop-shadow(0 0 4px rgba(216, 171, 40, 0.8));
-  }
-
-  .hc-hotspot::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
-
-  .hc-hotspot::after {
-    transform: translate(-50%, -50%) rotate(-45deg);
   }
 
   .hc-hotspot:hover {
     transform: translate(-50%, -50%) scale(1.2);
-    border-color: rgba(255, 255, 255, 0.95);
     box-shadow:
       0 0 16px rgba(216, 171, 40, 1),
       0 0 32px rgba(242, 221, 157, 0.8);
   }
 
-  @keyframes hc-sparkle-pulse {
+  @keyframes hc-glow-pulse {
     0%, 100% { transform: translate(-50%, -50%) scale(1); }
     50% { transform: translate(-50%, -50%) scale(1.15); }
   }
 
-  @keyframes hc-sparkle-twinkle {
+  @keyframes hc-glow-fade {
     0%, 100% {
       opacity: 0.9;
     }
@@ -553,6 +530,8 @@
     font-size: 0.9375rem;
     line-height: 1.75;
     color: rgba(255, 255, 255, 0.9);
+    max-height: none;
+    overflow-y: visible;
   }
 
   .hc-card-footer {
