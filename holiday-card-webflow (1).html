@@ -4,6 +4,11 @@
 <!-- Typekit Font -->
 <link rel="stylesheet" href="https://use.typekit.net/jnh3rud.css">
 
+<!-- Playfair Display Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <div class="hc-wrapper">
   <div class="hc-card">
     <div class="hc-media" id="hc-media">
@@ -286,9 +291,9 @@
 
   /* Intro Popup */
   .hc-popup-inner-intro {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(242, 221, 157, 0.12) 100%);
+    background: #0d1b2a;
     border-radius: 1.5rem;
-    box-shadow: 0 20px 50px rgba(12, 29, 38, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 2rem;
@@ -309,9 +314,9 @@
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.25em;
-    color: #804120;
+    color: #d8ab28;
     font-weight: 600;
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
   .hc-popup-close {
@@ -340,8 +345,8 @@
     margin: 0 0 1rem;
     font-size: 1.75rem;
     font-weight: 400;
-    font-family: 'charcuterie-block', serif;
-    color: #1e293b;
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
     letter-spacing: 0.02em;
     line-height: 1.3;
   }
@@ -350,7 +355,7 @@
     margin: 0 0 1.5rem;
     font-size: 1rem;
     line-height: 1.8;
-    color: #475569;
+    color: rgba(255, 255, 255, 0.9);
   }
 
   .hc-popup-button-primary {
@@ -374,9 +379,9 @@
 
   /* Explore Popup */
   .hc-popup-inner-explore {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(242, 221, 157, 0.12) 100%);
+    background: #0d1b2a;
     border-radius: 1.5rem;
-    box-shadow: 0 20px 50px rgba(12, 29, 38, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     width: 90vw;
@@ -391,13 +396,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid rgba(216, 171, 40, 0.1);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(216, 171, 40, 0.2);
+    background: transparent;
   }
 
   .hc-explore-back {
     font-size: 0.875rem;
-    color: #804120;
+    color: #f2dd9d;
     background: none;
     border: none;
     cursor: pointer;
@@ -415,7 +420,7 @@
 
   .hc-explore-counter {
     font-size: 0.75rem;
-    color: #64748b;
+    color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.15em;
     font-weight: 600;
   }
@@ -542,7 +547,7 @@
     margin: 0 0 0.75rem;
     font-size: 1.75rem;
     font-weight: 400;
-    font-family: 'charcuterie-block', serif;
+    font-family: 'Playfair Display', serif;
     color: #ffffff;
     letter-spacing: 0.01em;
     line-height: 1.3;
@@ -553,6 +558,7 @@
     font-size: 0.9375rem;
     line-height: 1.75;
     color: rgba(255, 255, 255, 0.9);
+    white-space: pre-line;
   }
 
   .hc-card-footer {
@@ -595,9 +601,9 @@
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
-    border-top: 1px solid rgba(216, 171, 40, 0.1);
+    border-top: 1px solid rgba(216, 171, 40, 0.2);
     gap: 1.25rem;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+    background: transparent;
   }
 
   .hc-nav-arrow {
@@ -820,30 +826,30 @@
       label: 'Bar',
       scale: 2.2,
       intro: {
-        title: 'The Midnight Bar',
-        text: 'A dimly lit space where the bartender knows everyone\'s name. The specialty is warm drinks with a kick.',
-        buttonText: 'Indulge'
+        title: 'The Holiday Bar',
+        text: 'Warm drinks and festive spirits to make your guests feel cozy. Self-serve options and crowd-pleasing favorites.',
+        buttonText: 'View Recipes'
       },
       cards: [
         {
-          category: 'Aperitif',
-          title: 'Midnight Negroni',
-          description: 'The classic, served with a charred orange peel that releases its oils in a fragrant burst, and a single large ice cube that melts slowly, opening the drink as the evening progresses. Equal parts gin, Campari, and sweet vermouth, stirred until the glass frosts. Simple in composition, complex in character—like the best conversations you\'ll have while drinking it.',
+          category: 'BAR',
+          title: 'Spiked (or Not) Hot Cider',
+          description: 'An easy way to make your guests feel cozy: pre-make it in a crockpot and self-serve with a ladle—it will also make your house smell great.\n\nMix in crockpot and heat on LOW for about 4 hours prior to serving:\n• 1 gallon apple cider\n• 5 cinnamon sticks\n• 1 tablespoon whole cloves or 2 (can bundle in cheesecloth)\n• 1 sliced orange (to float on top)\n\nOptional additions: Guests can add bourbon or whiskey to taste.\n\nGarnish: Cinnamon sticks, orange slices, or whole cranberries\n\nSpice it up ideas: Lemon juice, orange zest, cinnamon whiskey or vanilla bourbon, maple syrup, ginger slices, black peppercorns, allspice berries, whole star anise pods',
           cta: 'View Recipe',
-          icon: '🍸'
+          icon: '🍎'
         },
         {
-          category: 'Hot Cocktail',
-          title: 'Spiced Toddy',
-          description: 'Whiskey, honey, lemon, and a cinnamon stick—the remedy for any winter evening and the cure for whatever ails you. The water must be hot but not boiling, and the honey should be stirred until it dissolves completely. Served in a glass mug that warms your hands while you drink. There\'s a reason this recipe has survived centuries. It works.',
+          category: 'BAR',
+          title: 'Citrus Ginger Sparkler Mocktail',
+          description: 'Ingredients (1 serving):\n• 2 oz fresh grapefruit juice\n• 1 oz fresh lemon juice\n• 1 oz honey syrup (1:1 honey + warm water)\n• 2-3 slices fresh ginger\n• 2-3 dashes aromatic bitters (non-alcoholic available)\n• Sparkling water or club soda\n• Ice\n\nOptional upgrade: A sprig of rosemary or thyme, lightly torched for aroma.\n\nInstructions: In a shaker or jar, muddle the ginger with the honey syrup. Add grapefruit juice, lemon juice, and bitters. Shake well. Strain into a glass filled with ice. Top with sparkling water. Garnish with a citrus wheel or fresh herbs.',
           cta: 'View Recipe',
-          icon: '🍸'
+          icon: '🍋'
         },
         {
-          category: 'Signature',
-          title: 'Velvet Evening',
-          description: 'A house creation with aged rum, Madagascar vanilla, and a hint of cold-brew coffee. Served in a warmed glass with a single coffee bean floating on top. Rich and smooth, with a finish that lingers. The bartender developed this over three winters, adjusting the proportions until it was exactly right. Now it\'s what everyone orders on their first visit—and every visit after.',
-          cta: 'View Recipe',
+          category: 'BAR',
+          title: 'More Holiday Drinks',
+          description: 'Explore our full collection of seasonal cocktails and mocktails perfect for holiday gatherings. From classic hot toddies to creative mocktails, we have something for everyone. These recipes are designed to be make-ahead friendly and guest-approved. Whether you\'re hosting an intimate dinner or a large party, these drinks will keep your guests warm and happy all season long.',
+          cta: 'Explore More',
           icon: '🍸'
         }
       ]
